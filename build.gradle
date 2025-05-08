@@ -1,23 +1,23 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-
     ext.support_version = "27.1.0"
-    ext.min_version = 15
-    ext.compile_version = 27
-    ext.target_version = 27
-    ext.buildToolsVer = '27.0.3'
+    ext.min_version = 25
+    ext.compile_version = 34
+    ext.target_version = 34
+    ext.buildToolsVer = '34.0.0'
     ext.version_code = 10
     ext.library_version = "0.1.6"
     ext.enable_bintray = true
-
+    ext.kotlin_version = "1.5.32"
     repositories {
-        jcenter()
         google()
+        mavenCentral()
+        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
-        classpath 'com.novoda:bintray-release:0.8.0'
+        classpath "com.android.tools.build:gradle:7.2.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -25,15 +25,26 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         google()
+        mavenCentral()
+        jcenter()
+        //maven { url  "https://dl.bintray.com/946832374m/scam"  }
+    }
+
+    configurations.all {
+        //循环每个依赖库
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            //获取当前循环到的依赖库
+            def requested = details.requested
+            if (requested.group == 'androidx.core') {
+                if (requested.name == "core-ktx" || requested.name == "core") {
+                    details.useVersion '1.5.0'
+                }
+            }
+        }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.6'
 }

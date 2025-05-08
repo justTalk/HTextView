@@ -39,8 +39,9 @@ dependencies {
     implementation project(':htextview-fall')
 
     // optional
-    implementation "com.android.support:appcompat-v7:$support_version"
-
+//    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation 'androidx.core:core-ktx:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     def htextview_version = library_version
 
 //    implementation "com.hanks:htextview-base:$htextview_version"    // base library

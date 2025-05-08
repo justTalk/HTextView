@@ -9,21 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LineTextViewActivity">
+        <activity android:name=".LineTextViewActivity" android:exported="false">
         </activity>
-        <activity android:name=".FadeTextViewActivity">
+        <activity android:name=".FadeTextViewActivity" android:exported="false">
         </activity>
-        <activity android:name=".RainbowTextViewActivity">
+        <activity android:name=".RainbowTextViewActivity" android:exported="false">
         </activity>
-        <activity android:name=".TyperTextViewActivity">
+        <activity android:name=".TyperTextViewActivity" android:exported="false">
         </activity>
-        <activity android:name=".ScaleTextViewActivity">
+        <activity android:name=".ScaleTextViewActivity" android:exported="false">
         </activity>
-        <activity android:name=".EvaporateTextViewActivity">
+        <activity android:name=".EvaporateTextViewActivity" android:exported="false">
         </activity>
-        <activity android:name=".FallTextViewActivity">
+        <activity android:name=".FallTextViewActivity"
+            android:exported="false">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
